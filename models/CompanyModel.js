@@ -55,7 +55,7 @@ const CompanySchema = new mongoose.Schema(
     },
     registrationDate: {
       type: Date,
-      required: true,
+      // required: true,
     },
   },
   {

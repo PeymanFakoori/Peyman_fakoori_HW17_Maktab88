@@ -2,7 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-const creationValidator = require("../middlewares/employeeValidator");
+const employeeValidator = require("../middlewares/employeeValidator");
 
 const {
   creatEmployee,
@@ -12,7 +12,7 @@ const {
   removeEmployee,
 } = require("../controllers/employeeController");
 
-router.post("/", creationValidator, creatEmployee);
+router.post("/new", employeeValidator, creatEmployee);
 
 router.get("/all", readEmployee);
 

@@ -3,9 +3,9 @@ const createError = require("http-errors");
 const employee = require("../models/EmployeeModel");
 
 const creationValidator = async (req, res, next) => {
-  if (!req.body.firstname)
+  if (!req.body.firstName)
     return next(createError(400, "firstname is required"));
-  if (!req.body.lastname) return next(createError(400, "lastname is required"));
+  if (!req.body.lastName) return next(createError(400, "lastname is required"));
   if (!req.body.gender) req.body.gender = "not-set";
 
   if (!["male", "female", "not-set"].includes(req.body.gender))

@@ -20,16 +20,16 @@ const creatEmployee = async (req, res, next) => {
       path: "company",
       select: { __v: 0 },
     });
-    const result = await res.json(populatedEmployee);
+    return res.json(populatedEmployee);
   } catch (error) {
-    return next(createError(500, error.message));
+    return next(createError(500, "somthing went wrong"));
   }
 };
 
 const readEmployee = async (req, res, next) => {
   try {
     const allEmployee = await employee.find({});
-    res.send(allEmployee);
+    res.json(allEmployee);
   } catch (error) {
     next(createError(500, "somthing went wrong"));
   }
@@ -41,7 +41,7 @@ const findEmployeeById = async (req, res, next) => {
     const found = await employee
       .findById(employeeID)
       .populate({ path: "company", select: { __v: 0 } });
-    res.send(found);
+    res.json(found);
   } catch (error) {
     console.log(error);
     next(createError(500, "somthing went wrong"));
