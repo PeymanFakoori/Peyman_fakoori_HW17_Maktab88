@@ -4,8 +4,8 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const mongoose = require("mongoose");
-const employeeRouter = require("./routes/employeeRout");
-
+const employeeRoute = require("./routes/employeeRout");
+const companyRoute = require("./routes/companyRout");
 const app = express();
 
 mongoose.connect("mongodb://127.0.0.1:27017/HW17").then(() => {
@@ -22,7 +22,8 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/employee", employeeRouter);
+app.use("/employee", employeeRoute);
+app.use("/company", companyRoute);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
