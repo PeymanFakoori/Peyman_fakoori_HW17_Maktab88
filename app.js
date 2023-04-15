@@ -1,12 +1,16 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const mongoose = require("mongoose");
+const employeeRouter = require("./routes/employeeRout");
 
-var employeeRouter = require("./routes/employeeRout");
+const app = express();
 
-var app = express();
+mongoose.connect("mongodb://127.0.0.1:27017/HW17").then(() => {
+  console.log("DB is Connected");
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
@@ -18,7 +22,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use("/", employeeRouter);
+app.use("/employee", employeeRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
