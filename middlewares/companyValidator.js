@@ -57,6 +57,7 @@ const creationValidator = async (req, res, next) => {
   //   )
   // )
   //   return next(createError(400, "wrong format"));
+  next();
 };
 
 module.exports = creationValidator;

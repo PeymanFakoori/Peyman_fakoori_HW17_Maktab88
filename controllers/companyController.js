@@ -16,7 +16,8 @@ const createCompany = async (req, res, next) => {
 
     const result = await res.json(savedCompany);
   } catch (error) {
-    next(createError(500, "somthing went wrong"));
+    console.log(error.message);
+    next(createError(500, "errore server creat populate", error.message));
   }
 };
 
