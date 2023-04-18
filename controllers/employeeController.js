@@ -16,11 +16,6 @@ const creatEmployee = async (req, res, next) => {
     });
 
     const savedEmployee = await newEmployee.save();
-    const populatedEmployee = await savedEmployee.populate({
-      path: "company",
-      select: { __v: 0 },
-    });
-    return res.json(populatedEmployee);
   } catch (error) {
     return next(createError(500, "somthing went wrong"));
   }
@@ -38,9 +33,7 @@ const readEmployee = async (req, res, next) => {
 const findEmployeeById = async (req, res, next) => {
   try {
     const employeeID = req.params.id;
-    const found = await employee
-      .findById(employeeID)
-      .populate({ path: "company", select: { __v: 0 } });
+    const found = await employee.findById(employeeID).populate("company");
     res.json(found);
   } catch (error) {
     console.log(error);

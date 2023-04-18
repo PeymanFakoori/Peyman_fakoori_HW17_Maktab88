@@ -77,7 +77,6 @@ const EmployeeSchema = new mongoose.Schema(
       ref: "company",
       trim: true,
       required: true,
-      type: String,
     },
   },
   {
