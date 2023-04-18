@@ -23,7 +23,7 @@ const CompanySchema = new mongoose.Schema(
       trim: true,
       enum: [
         "tehran",
-        "karaj",
+        "alborz",
         "khorasan",
         "fars",
         "azarbayjan sharghi",
@@ -55,7 +55,7 @@ const CompanySchema = new mongoose.Schema(
     },
     registrationDate: {
       type: Date,
-      // required: true,
+      required: true,
     },
   },
   {

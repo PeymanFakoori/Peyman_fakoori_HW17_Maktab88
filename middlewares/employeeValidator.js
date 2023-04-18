@@ -14,13 +14,6 @@ const creationValidator = async (req, res, next) => {
   if (!req.body.dateOfBirth)
     return next(createError(400, "dateOfBirth is required"));
 
-  if (
-    !req.body.dateOfBirth.match(
-      /(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).([19]{2})?([1-9]{2})/
-    )
-  )
-    return next(createError(400, "wrong format"));
-
   if (!req.body.phone) return next(createError(400, "phone is required"));
   try {
     const checkPhone = await employee.exists({
@@ -28,26 +21,23 @@ const creationValidator = async (req, res, next) => {
     });
     if (checkPhone) return next(createError(400, "phone is exists"));
   } catch (error) {
-    return next(createError(500, "server errore!!!!!"));
+    return next(createError(500, "server error"));
   }
 
   if (!req.body.nationalId)
-    return next(createError(400, "nationallId is required"));
+    return next(createError(400, "nationalId is required"));
 
-  if (req.body.nationalId.length != 10)
-    return next(createError(400, "nationallId   must have 10 characters"));
-
-  const checkNationalId = await employee.exists({
-    nationallId: req.body.nationallId,
+  const checkID = await employee.exists({
+    nationalId: req.body.nationalId,
   });
 
-  if (checkNationalId) return next(createError(400, "nasionalId is exists"));
+  if (checkID) return next(createError(400, "nationalCode is dublicate!!!!!!"));
 
   if (!req.body.state) req.body.state = "not-set";
 
   const stateField = [
     "tehran",
-    "karaj",
+    "alborz",
     "khorasan",
     "fars",
     "azarbayjan sharghi",

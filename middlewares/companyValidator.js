@@ -13,7 +13,7 @@ const creationValidator = async (req, res, next) => {
 
   const stateField = [
     "tehran",
-    "karaj",
+    "alborz",
     "khorasan",
     "fars",
     "azarbayjan sharghi",
@@ -52,7 +52,7 @@ const creationValidator = async (req, res, next) => {
   }
 
   // if (
-  //   !req.body.dateOfBirth.match(
+  //   !req.body.registrationDate.match(
   //     /^\d{4}\-(0?[1-9]|1[012])\-(0?[1-9]|[12][0-9]|3[01])$/
   //   )
   // )

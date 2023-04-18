@@ -4,12 +4,12 @@ const EmployeeSchema = new mongoose.Schema(
   {
     firstName: {
       type: String,
-      //   required: true,
+      required: true,
       trim: true,
     },
     lastName: {
       type: String,
-      //   required: true,
+      required: true,
       trim: true,
     },
     gender: {
@@ -20,27 +20,28 @@ const EmployeeSchema = new mongoose.Schema(
     dateOfBirth: {
       type: Date,
       trim: true,
-      //   required: true,
+      required: true,
     },
     phone: {
       type: Number,
-      //   required: true,
+      required: true,
       unique: true,
       match: /^09[0-9]{9}$/,
     },
     nationalId: {
       type: Number,
-      //   required: true,
+      required: true,
       unique: true,
-      length: 10,
+      minlength: 10,
+      maxlength: 10,
     },
     state: {
       type: String,
-      //   required: true,
+      required: true,
       trim: true,
       enum: [
         "tehran",
-        "karaj",
+        "alborz",
         "khorasan",
         "fars",
         "azarbayjan sharghi",
@@ -68,17 +69,15 @@ const EmployeeSchema = new mongoose.Schema(
     role: {
       type: String,
       enum: ["manager", "employee"],
-      //   required: true,
+      required: true,
       trim: true,
     },
     company: {
       type: mongoose.Types.ObjectId,
       ref: "company",
       trim: true,
-      // required: true,
+      required: true,
       type: String,
-      minlength: 2,
-      maxlength: 40,
     },
   },
   {
