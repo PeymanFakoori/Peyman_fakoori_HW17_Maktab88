@@ -62,7 +62,7 @@ const EmployeeSchema = new mongoose.Schema(
         "Hamedan",
         "markazi",
         "hormozgan",
-        "Qom",
+        "qom",
         "zanjan",
       ],
     },

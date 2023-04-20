@@ -33,7 +33,9 @@ const readEmployee = async (req, res, next) => {
 const findEmployeeById = async (req, res, next) => {
   try {
     const employeeID = req.params.id;
-    const found = await employee.findById(employeeID).populate("company");
+    const found = await employee
+      .findById(employeeID)
+      .populate("company", { name: 1 });
     res.json(found);
   } catch (error) {
     console.log(error);

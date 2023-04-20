@@ -34,7 +34,7 @@ const creationValidator = async (req, res, next) => {
     "Hamedan",
     "markazi",
     "hormozgan",
-    "Qom",
+    "qom",
     "zanjan",
   ].includes(req.body.state);
 
@@ -48,7 +48,7 @@ const creationValidator = async (req, res, next) => {
 
     if (checkPhone) return next(createError(400, "phone is exists"));
   } catch (error) {
-    return next(createError(500, "server errore!!!!!"));
+    return next(createError(500, "server error!"));
   }
 
   // if (
